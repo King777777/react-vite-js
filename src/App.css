@@ -1,5 +1,8 @@
+html,body{
+  height: 100%;
+}
 .page{
-  height: 100vh;
+  height: 100%;
   display: flex;
   gap: 12px;
   background-color: white;
@@ -17,19 +20,3 @@
   background-color: white;
   overflow: hidden;
 }
-.myButton{
-
-}
-.test1{
-  background-color: red;
-}
-
-.test3{
-  background-color: blue;
-}
-.test2{
-  background-color: green;
-}
-/*.ant-btn-primary{*/
-/*  background-color: aqua;*/
-/*}*/
