@@ -1,29 +1,43 @@
+import {useState} from 'react';
 import {Menu} from 'antd';
-import {useIn} from 'react';
-import 'antd/dist/antd.css';
 import './App.css'
-import MouseTracker from "./RecordXDistance/RecordXDistanceIndex";
+import KeyMapComponent from "./KeyMapComponent";
 
-const items = [
-  { label: '菜单项一', key: 'item-1' }, // 菜单项务必填写 key
-  { label: '菜单项二', key: 'item-2' },
-  {
-    label: '子菜单',
-    key: 'submenu',
-    children: [{ label: '子菜单项', key: 'submenu-item-1' }],
-  },
-];
+const {SubMenu} = Menu;
 
 function App() {
+  const [key, setKey] = useState("mouseTracker");
+  const handleClick = e => {
+    setKey(e.key);
+  };
   return (
-    <section className="page">
-      <aside className="aside">
-        <Menu items={items} />
-      </aside>
-      <main className="main">
-        <MouseTracker />
-      </main>
-    </section>
+    <>
+      <div style={{float: "left"}}>
+        <Menu
+          onClick={handleClick}
+          style={{width: 256}}
+          defaultSelectedKeys={[key]}
+          defaultOpenKeys={['sub1']}
+          mode="inline"
+        >
+          <SubMenu
+            key="sub1"
+            title={
+              <span>Hooks</span>
+            }
+          >
+            {
+              Object.keys(KeyMapComponent).map(key => {
+                return <Menu.Item key={key}>{key}</Menu.Item>
+              })
+            }
+          </SubMenu>
+        </Menu>
+      </div>
+      <div style={{overflow: 'hidden', backgroundColor: '#F0F0F0', padding: '8px 12px'}}>
+        {KeyMapComponent[key]}
+      </div>
+    </>
   )
 }
 
