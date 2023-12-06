@@ -2,35 +2,49 @@ import React, {Component, useEffect, useRef} from "react";
 
 class Child extends Component{
 
-  componentDidMount() {
+  constructor(props) {
+    super(props);
     const {callback} = this.props;
     callback(this.handleClick);
   }
 
+  componentDidMount() {
+
+  }
+
   handleClick = () => {
-    alert("调用子组件提交");
+    alert("调用第三组件提交");
   }
 
   render(){
     return (
-      <button onClick={this.handleClick}>子组件</button>
+      <button onClick={this.handleClick}>孙子组件</button>
     )
   }
 }
 
 const FunctionChild = props => {
 
+  const meRef = useRef(null);
+  const callback = (func) => {
+    meRef.current = func;
+  }
+
   const handleClick = () => {
-    alert("调用函数式子组件提交");
+    alert("点击父组件提交");
+    meRef.current && meRef.current();
   }
 
   useEffect(() => {
     // props.callback(handleClick);
-    props.childrenMethod.current = handleClick;
   })
 
   return (
-    <button onClick={handleClick}>子组件</button>
+    <>
+      <button onClick={handleClick}>子组件</button>
+      <Child callback={callback}/>
+    </>
+
   )
 }
 
@@ -49,8 +63,8 @@ class Father extends Component{
   render(){
     return (
       <>
-        <button onClick={this.handleClick}>父组件</button>
-        <FunctionChild callback={this.callback}/>
+        {/*<button onClick={this.handleClick}>父组件</button>*/}
+        <FunctionChild />
         {/*<Child callback={this.callback} />*/}
       </>
     )
@@ -73,7 +87,7 @@ const FuncFather = props => {
     return (
       <>
         <button onClick={handleClick}>父组件</button>
-        <FunctionChild callback={callback} childrenMethod={childrenMethod}/>
+        <FunctionChild callback={callback} />
         {/*<Child callback={this.callback} />*/}
       </>
     )
