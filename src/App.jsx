@@ -9,7 +9,7 @@ const {SubMenu} = Menu;
 function App() {
   const [key, setKey] = useState("mouseTracker");
   const handleClick = e => {
-    console.log("e");
+    console.log("e", e);
     setKey(e.key);
   };
   return (
