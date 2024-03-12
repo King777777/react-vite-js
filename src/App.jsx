@@ -39,7 +39,7 @@ function App() {
       <div style={{overflow: 'hidden', backgroundColor: '#F0F0F0', padding: '8px 12px'}}>
         {KeyMapComponent[key]}
       </div>
-      <WaterMarkIndex />
+      {/*<WaterMarkIndex />*/}
     </>
   )
 }
