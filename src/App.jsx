@@ -12,6 +12,7 @@ function App() {
     console.log("e", e);
     setKey(e.key);
   };
+
   return (
     <>
       <div style={{float: "left"}}>

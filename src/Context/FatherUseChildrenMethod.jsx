@@ -72,7 +72,7 @@ class Father extends Component{
 }
 
 const FuncFather = props => {
-
+  console.log("render classFather use children method")
   const childrenMethod = useRef(null);
 
   const handleClick = () => {

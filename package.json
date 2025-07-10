@@ -10,9 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@antv/g6": "^5.0.49",
     "antd": "^4.24.14",
+    "axios": "^1.7.9",
+    "bpmn-js": "^17.11.1",
+    "excel": "^1.0.1",
+    "exceljs": "^4.4.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

@@ -1,13 +1,14 @@
 // 父组件
 import React, { useState } from 'react';
 
-const ParentComponent = () => {
+const ParentComponent = (props) => {
   const [person, setPerson] = useState({ age: '18' });
   const [f, flash] = useState(0);
 
   // 将对象引用传递给子组件
   return (
     <div>
+      {props.children}
       <p>Asuibian ge: {person.age}</p>
       <button onClick={() => flash(f + 1)}>刷新</button>
       <ChildComponent person={person} />

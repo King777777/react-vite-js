@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import MessageButton from "./MessageButton";
 
 const UseCbAndMemo = (props) => {
+  console.log("git statsh test");
   const [show, setShow] = useState(true);
   const [count, setCount] = useState(0);
   const onclick = () => {
