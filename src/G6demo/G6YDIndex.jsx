@@ -1,9 +1,8 @@
 import React, {useEffect, useRef} from "react";
 import { register, ExtensionCategory, Graph } from '@antv/g6';
-import CustomLayoutIndex from "../CustomLayout/CustomLayoutIndex";
 
 //注册布局
-register(ExtensionCategory.LAYOUT, 'custom-layout', CustomLayoutIndex);
+register(ExtensionCategory.LAYOU, 'custom-layout', );
 
 const data = {
   "nodes": [

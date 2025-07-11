@@ -9,6 +9,7 @@ import Test from "./Context/Test";
 import UseCbAndMemo from "./UseCallbackAndMemo/UseCBAndMemo";
 import BpmnTest from "./BpmnDemo/bpmnDemo";
 import G6DemoIndex from "./G6demo/G6DemoIndex";
+// import X6DemoIndex from "./X6Demo/X6DemoIndex";
 
 const KeyMapComponent = {
   "mouseTracker": <MouseTracker />,
@@ -20,6 +21,7 @@ const KeyMapComponent = {
   "useCallback&memo": <UseCbAndMemo />,
   "bpmndemo": <BpmnTest />,
   "G6Demo": <G6DemoIndex />,
+  // "X6Demo": <X6DemoIndex/>
 }
 
 export default KeyMapComponent;
