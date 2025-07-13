@@ -1,38 +1,32 @@
-import React, {Component, useEffect, useRef} from "react";
+import React, { Component, useEffect, useRef } from 'react'
 
-class Child extends Component{
-
+class Child extends Component {
   constructor(props) {
-    super(props);
-    const {callback} = this.props;
-    callback(this.handleClick);
+    super(props)
+    // const {callback} = this.props;
+    // callback(this.handleClick);
   }
 
-  componentDidMount() {
-
-  }
+  componentDidMount() {}
 
   handleClick = () => {
-    alert("调用第三组件提交");
+    alert('调用第三组件提交')
   }
 
-  render(){
-    return (
-      <button onClick={this.handleClick}>孙子组件</button>
-    )
+  render() {
+    return <button onClick={this.handleClick}>孙子组件</button>
   }
 }
 
 const FunctionChild = props => {
-
-  const meRef = useRef(null);
-  const callback = (func) => {
-    meRef.current = func;
+  const meRef = useRef(null)
+  const callback = func => {
+    meRef.current = func
   }
 
   const handleClick = () => {
-    alert("点击父组件提交");
-    meRef.current && meRef.current();
+    alert('点击父组件提交')
+    meRef.current && meRef.current()
   }
 
   useEffect(() => {
@@ -42,25 +36,23 @@ const FunctionChild = props => {
   return (
     <>
       <button onClick={handleClick}>子组件</button>
-      <Child callback={callback}/>
+      <Child callback={callback} />
     </>
-
   )
 }
 
-class Father extends Component{
-
-  childrenMethod = null;
+class Father extends Component {
+  childrenMethod = null
 
   handleClick = () => {
-    this.childrenMethod && this.childrenMethod();
+    this.childrenMethod && this.childrenMethod()
   }
 
-  callback = (func) => {
-    this.childrenMethod = func;
+  callback = func => {
+    this.childrenMethod = func
   }
 
-  render(){
+  render() {
     return (
       <>
         {/*<button onClick={this.handleClick}>父组件</button>*/}
@@ -72,25 +64,24 @@ class Father extends Component{
 }
 
 const FuncFather = props => {
-  console.log("render classFather use children method")
-  const childrenMethod = useRef(null);
+  console.log('render classFather use children method')
+  const childrenMethod = useRef(null)
 
   const handleClick = () => {
-    alert("父组件click");
-    childrenMethod.current && childrenMethod.current();
+    alert('父组件click')
+    childrenMethod.current && childrenMethod.current()
   }
 
-  const callback = (func) => {
-    childrenMethod.current = func;
+  const callback = func => {
+    childrenMethod.current = func
   }
 
-    return (
-      <>
-        <button onClick={handleClick}>父组件</button>
-        <FunctionChild callback={callback} />
-        {/*<Child callback={this.callback} />*/}
-      </>
-    )
-
+  return (
+    <>
+      <button onClick={handleClick}>父组件</button>
+      <FunctionChild callback={callback} />
+      {/*<Child callback={this.callback} />*/}
+    </>
+  )
 }
-export default FuncFather;
+export default FuncFather
