@@ -1,47 +1,34 @@
-import {useState} from 'react';
-import {Menu} from 'antd';
-import './App.css'
-import KeyMapComponent from "./KeyMapComponent";
-import WaterMarkIndex from "./WaterMark/WaterMarkIndex";
+import React, { useState } from 'react'
+import { Menu } from 'antd'
+import KeyMapComponent from './KeyMapComponent'
+import styles from './app.module.css'
 
-const {SubMenu} = Menu;
+const { SubMenu } = Menu
 
 function App() {
-  const [key, setKey] = useState("mouseTracker");
+  const [key, setKey] = useState('mouseTracker')
   const handleClick = e => {
-    console.log("e", e);
-    setKey(e.key);
-  };
-
+    setKey(e.key)
+  }
   return (
-    <>
-      <div style={{float: "left"}}>
+    <div className={styles.container}>
+      <div className={styles.sider}>
         <Menu
           onClick={handleClick}
-          style={{width: 256}}
+          style={{ width: '100%' }}
           defaultSelectedKeys={[key]}
           defaultOpenKeys={['sub1']}
           mode="inline"
         >
-          <SubMenu
-            key="sub1"
-            title={
-              <span>Hooks</span>
-            }
-          >
-            {
-              Object.keys(KeyMapComponent).map(key => {
-                return <Menu.Item key={key}>{key}</Menu.Item>
-              })
-            }
+          <SubMenu key="sub1" title={<span>Hooks</span>}>
+            {Object.keys(KeyMapComponent).map(key => {
+              return <Menu.Item key={key}>{key}</Menu.Item>
+            })}
           </SubMenu>
         </Menu>
       </div>
-      <div style={{overflow: 'hidden', backgroundColor: '#F0F0F0', padding: '8px 12px'}}>
-        {KeyMapComponent[key]}
-      </div>
-      {/*<WaterMarkIndex />*/}
-    </>
+      <div className={styles.right}>{KeyMapComponent[key]}</div>
+    </div>
   )
 }
 

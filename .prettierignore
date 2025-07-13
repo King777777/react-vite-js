@@ -1,0 +1,6 @@
+# 创建 .prettierignore，告诉 Prettier 哪些文件不用格式化
+node_modules
+dist
+build
+coverage
+*.lock

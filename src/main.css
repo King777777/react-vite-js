@@ -1,7 +1,11 @@
-#root,html,body{
+#root,
+html,
+body {
   height: 100%;
 }
-*,::before,::after{
+*,
+::before,
+::after {
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
