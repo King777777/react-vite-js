@@ -20,36 +20,38 @@ class CustomLayoutIndex extends BaseLayout {
 
     groupKeys.forEach((comboId, groupIndex) => {
       const group = grouped[comboId];
-      // if(groupIndex !== 0){
-      //   group.unshift({id: `x_${groupIndex}`, combo: comboId})
-      // }
-
-      const x = groupIndex * 150;
+      const x = groupIndex * 100;
       group.forEach((node, nodeIndex, arr) => {
 
-        if (nodeIndex === 0 && groupIndex !== 0 && arr.length > 1) {
-          result.push({
-            id: node.id,
-            combo: comboId,
-            style: {
-              x: groupIndex * 150,
-              y: 0, // 插入不可见的虚拟节点，使得分组框 combo 顶部对齐位置
-              opacity: 0
-            },
-            size: 1,
-            type: 'rect',
-            visible: false,
-          });
-        } else {
-          result.push({
-            id: node.id,
-            style: {
-              x,
-              y: nodeIndex * 100 + (groupIndex) *100,
-            }
-          });
-        }
-
+        result.push({
+          id: node.id,
+          style: {
+            x,
+            y: nodeIndex * 100 + (groupIndex) *100,
+          }
+        });
+        // if (nodeIndex === 0 && groupIndex !== 0 && arr.length > 1) {
+        //   result.push({
+        //     id: node.id,
+        //     combo: comboId,
+        //     style: {
+        //       x: groupIndex * 150,
+        //       y: 0, // 插入不可见的虚拟节点，使得分组框 combo 顶部对齐位置
+        //       opacity: 0
+        //     },
+        //     size: 1,
+        //     type: 'rect',
+        //     visible: false,
+        //   });
+        // } else {
+        //   result.push({
+        //     id: node.id,
+        //     style: {
+        //       x,
+        //       y: nodeIndex * 100 + (groupIndex) *100,
+        //     }
+        //   });
+        // }
 
       });
     });

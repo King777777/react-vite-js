@@ -1,9 +1,10 @@
 import React, {useEffect, useRef} from "react";
 import { register, ExtensionCategory, Graph } from '@antv/g6';
 import CustomLayoutIndex from "../CustomLayout/CustomLayoutIndex";
+import CustomYongdao from "../CustomLayout/CustomYongdao";
 
 //注册布局
-register(ExtensionCategory.LAYOUT, 'custom-layout', CustomLayoutIndex);
+register(ExtensionCategory.LAYOUT, 'custom-layout', CustomYongdao);
 
 const data = {
   "nodes": [
@@ -15,10 +16,10 @@ const data = {
       "id": "1",
       "combo": "A",
     },
-    {
-      id: 'x_1',
-      combo: 'B',
-    },
+    // {
+    //   id: 'x_1',
+    //   combo: 'B',
+    // },
     {
       "id": "2",
       "combo": "B",
@@ -27,10 +28,10 @@ const data = {
       "id": "3",
       "combo": "B",
     },
-    {
-      id: 'x_2',
-      combo: 'C',
-    },
+    // {
+    //   id: 'x_2',
+    //   combo: 'C',
+    // },
     {
       "id": "4",
       "combo": "C",
@@ -119,6 +120,8 @@ const G6DemoIndex = props => {
     const graph = new Graph({
       container: divRef.current,
       autoFit: 'center',
+      width: 1000,             // 画布宽度（像素）
+      height: 600,
       data,
       plugins: [
         {
