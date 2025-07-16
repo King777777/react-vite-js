@@ -10,6 +10,7 @@ import Test from './Context/Test'
 import UseCbAndMemo from './UseCallbackAndMemo/UseCBAndMemo'
 import BpmnTest from './BpmnDemo/bpmnDemo'
 import G6DemoIndex from './G6demo/G6DemoIndex'
+import G6RectYD from "./G6demo/G6RectYD";
 // import X6DemoIndex from "./X6Demo/X6DemoIndex";
 
 const routeConfig = [
@@ -41,6 +42,11 @@ const routeConfig = [
         path: 'g6',
         title: 'G6flow',
         element: <G6DemoIndex />,
+      },
+      {
+        path: 'g6RECT',
+        title: 'RectYd',
+        element: <G6RectYD />,
       },
     ],
   },

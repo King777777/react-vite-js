@@ -9,6 +9,7 @@ import Test from "./Context/Test";
 import UseCbAndMemo from "./UseCallbackAndMemo/UseCBAndMemo";
 import BpmnTest from "./BpmnDemo/bpmnDemo";
 import G6DemoIndex from "./G6demo/G6DemoIndex";
+import G6RectYD from "./G6demo/G6RectYD";
 // import X6DemoIndex from "./X6Demo/X6DemoIndex";
 
 const KeyMapComponent = {
@@ -21,6 +22,7 @@ const KeyMapComponent = {
   "useCallback&memo": <UseCbAndMemo />,
   "bpmndemo": <BpmnTest />,
   "G6Demo": <G6DemoIndex />,
+  "G6DemoRect": <G6RectYD />,
   // "X6Demo": <X6DemoIndex/>
 }
 
