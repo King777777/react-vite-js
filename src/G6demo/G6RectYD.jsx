@@ -1,43 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { Graph } from '@antv/g6';
-
 const SwimlaneDiagramV5 = () => {
   const containerRef = useRef(null);
-  const graphRef = useRef(null);
-
   useEffect(() => {
     const width = 1000;
     const height = 600;
 
-    const swimlaneCount = 4;
-    const swimlaneWidth = 80;
-    const swimlaneHeight = 600;
-    const swimlaneGap = 30;
-
-    const nodes = Array.from({ length: swimlaneCount }, (_, i) => ({
-      id: `lane-${i}`,
-      data: {
-        x: i * (swimlaneWidth + swimlaneGap) + swimlaneWidth / 2,
-        y: height / 2,
-      },
-      shape: 'rect',
-      style: {
-        width: swimlaneWidth,
-        height: swimlaneHeight,
-        fill: '#f0f2f5',
-        stroke: '#aaa',
-        radius: 4,
-        cursor: 'default',
-      },
-      labelText: `泳道 ${i + 1}`,
-      labelPlacement: 'top',
-      labelFontSize: 14,
-      labelFill: '#333',
-    }));
-    console.log('nodes',nodes);
-
-
-      const graph = new Graph({
+    const graph = new Graph({
         container: containerRef.current,
         width,
         height,
@@ -78,16 +47,13 @@ const SwimlaneDiagramV5 = () => {
                 y: 200,
                 fill: '#e6f7ff',
                 zIndex: -1,
-
-                // labelBackground: true,
-                // labelBackgroundFill: 'rgba(250, 140, 22, 0.1)',
-                // labelBackgroundRadius: 6,
                 labelText: '场景金融系统',
                 labelPadding: [6, 12],
                 labelFill: '#463c36',
                 labelFontWeight: 'bold',
                 labelPlacement: 'top',
               },
+              combo: 'A',
             },
             {
               id: 'lane2',
@@ -104,6 +70,7 @@ const SwimlaneDiagramV5 = () => {
                 labelFontWeight: 'bold',
                 labelPlacement: 'top',
               },
+              combo: 'A',
             },
             {
               id: 'lane3',
@@ -182,7 +149,7 @@ const SwimlaneDiagramV5 = () => {
                 labelPlacement: 'center',
               },
             },
-            // yGap 75, xGap 150
+            // y轴间距75, x轴间距 150
             {
               id: 'myNode3',
               type: 'rect',
@@ -338,15 +305,35 @@ const SwimlaneDiagramV5 = () => {
               "source": "myNode4",
               "target": "myNode7"
             },
-
           ],
-
+          "combos": [
+            {
+              "id": "A",
+              "desc": 'TestA',
+              "style": {
+                "type": "rect",
+                // fill: '#5B8FF9', // 蓝色填充
+                stroke: '#1A1A1A', // 深色描边
+                lineWidth: 2,
+                fillOpacity: 0.2,
+              }
+            },
+          ]
         },
         // palette: {
         //   field: d => d.id,
         // },
+      combo: {
+        type: 'rect',
+        style: {
+          radius: 8,
+          labelText: (d) => d.desc,
+          stroke: 'orange',
+          style:{fill: 'red'}
+        },
+      },
       });
-      graph.render();
+    graph.render();
 
   }, []);
 
